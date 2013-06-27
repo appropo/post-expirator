@@ -1,6 +1,12 @@
 <?php
 
-class postExpiratorDebug {
+if ( ! function_exists( 'add_filter' ) ) {
+	header('Status: 403 Forbidden');
+	header('HTTP/1.1 403 Forbidden');
+	exit();
+}
+
+class Post_Expirator_Debug extends Post_Expirator_Settings {
 
 	function __construct() {
 		global $wpdb;
@@ -44,11 +50,11 @@ class postExpiratorDebug {
 		global $wpdb;
 		$results = $wpdb->get_results("SELECT * FROM {$this->debug_table} ORDER BY `id` DESC");
 		if (empty($results)) {
-			print '<p>'.__('Debugging table is currently empty.','post-expirator').'</p>';
+			print '<p>'.__( 'Debugging table is currently empty.', 'post-expirator').'</p>';
 			return;
 		}
 		print '<table class="post-expirator-debug">';
-		print '<tr><th class="post-expirator-timestamp">'.__('Timestamp','post-expirator').'</th>';
+		print '<tr><th class="post-expirator-timestamp">'.__( 'Timestamp', 'post-expirator').'</th>';
 		print '<th>'.__('Message','post-expirator').'</th></tr>';
 		foreach ($results as $result) {
 			print '<tr><td>'.$result->timestamp.'</td>';
@@ -61,4 +67,5 @@ class postExpiratorDebug {
 		global $wpdb;
 		$wpdb->query("TRUNCATE TABLE {$this->debug_table}");		
 	}
-}
+
+} // END class Post_Expirator_Debug
