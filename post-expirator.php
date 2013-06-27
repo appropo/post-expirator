@@ -6,8 +6,10 @@ Description: Allows you to add an expiration date (minute) to posts which you ca
 Author: Aaron Axelsen
 Version: 2.1.1
 Author URI: http://postexpirator.tuxdocs.net/
-Translation: Thierry (http://palijn.info)
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: post-expirator
+Domain Path: /languages
 */
 
 /* Load translation, if it exists */
